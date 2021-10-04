@@ -24,10 +24,10 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
             "post_id",
         ]
 
-    def create(self, validated_data):
+    def create(self, validated_data: dict):
         return Comment.objects.create(**validated_data)
 
-    def update(self, comment, validated_data):
+    def update(self, comment, validated_data: dict):
         comment.author_name = validated_data.get(
             "author_name", comment.author_name
         )
@@ -67,7 +67,7 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
             "comments",
         ]
 
-    def create(self, validated_data):
+    def create(self, validated_data: dict):
         comments_data = validated_data.pop("comments")
         post = Post.objects.create(**validated_data)
         for comment_data in comments_data:
@@ -75,7 +75,7 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
             Comment.objects.create(**comment_data)
         return post
 
-    def update(self, post, validated_data):
+    def update(self, post, validated_data: dict):
         post.title = validated_data.get("title", post.title)
         post.link = validated_data.get("link", post.link)
         post.creation_date = validated_data.get(
