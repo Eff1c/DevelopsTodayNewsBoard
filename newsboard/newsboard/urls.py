@@ -1,5 +1,4 @@
 from django.urls import path
-from rest_framework.urlpatterns import format_suffix_patterns
 
 from .views import PostViewSet, PostDetail, CommentViewSet, \
     CommentDetail, UpvoteView
@@ -18,7 +17,5 @@ urlpatterns = [
         "api/posts/<int:post_id>/comments/<int:comment_id>/",
         CommentDetail.as_view()
     ),
-    path("api/posts/<int:post_id>/upvote", UpvoteView.as_view()),
+    path("api/posts/<int:post_id>/upvote/", UpvoteView.as_view()),
 ]
-
-urlpatterns = format_suffix_patterns(urlpatterns)
