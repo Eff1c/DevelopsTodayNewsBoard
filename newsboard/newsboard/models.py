@@ -11,13 +11,16 @@ class Post(models.Model):
     class Meta:
         ordering = ["-amount_of_upvotes"]
 
+
 class Comment(models.Model):
     author_name = models.CharField(max_length=100)
     content = models.TextField()
     creation_date = models.DateField(auto_now_add=True)
-    post = models.ForeignKey(Post,
-                             on_delete=models.CASCADE,
-                             related_name="comments",)
+    post = models.ForeignKey(
+        Post,
+        on_delete=models.CASCADE,
+        related_name="comments",
+    )
 
     class Meta:
         ordering = ["-creation_date"]

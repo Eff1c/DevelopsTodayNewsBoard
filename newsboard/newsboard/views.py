@@ -50,11 +50,8 @@ class CommentViewSet(ViewSet):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def create(self, request, post_id: int) -> Response:
-        # post = get_object(Post, post_id)
-        print(post_id)
         validated_data = request.data
-        validated_data["post_id"] = str(post_id)
-        print(validated_data, type(validated_data))
+        validated_data["post_id"] = post_id
         serializer = CommentSerializer(validated_data)
 
         serializer = CommentSerializer(data=serializer.data)

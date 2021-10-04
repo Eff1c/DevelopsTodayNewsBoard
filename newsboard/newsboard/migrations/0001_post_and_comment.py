@@ -8,29 +8,51 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Post',
+            name="Post",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=100)),
-                ('link', models.URLField()),
-                ('creation_date', models.DateField(auto_now_add=True)),
-                ('amount_of_upvotes', models.IntegerField()),
-                ('author_name', models.CharField(max_length=100)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=100)),
+                ("link", models.URLField()),
+                ("creation_date", models.DateField(auto_now_add=True)),
+                ("amount_of_upvotes", models.IntegerField()),
+                ("author_name", models.CharField(max_length=100)),
             ],
         ),
         migrations.CreateModel(
-            name='Comment',
+            name="Comment",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('author_name', models.CharField(max_length=100)),
-                ('content', models.TextField()),
-                ('creation_date', models.DateField(auto_now_add=True)),
-                ('post', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='comments', to='newsboard.post')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("author_name", models.CharField(max_length=100)),
+                ("content", models.TextField()),
+                ("creation_date", models.DateField(auto_now_add=True)),
+                (
+                    "post",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="comments",
+                        to="newsboard.post",
+                    ),
+                ),
             ],
         ),
     ]

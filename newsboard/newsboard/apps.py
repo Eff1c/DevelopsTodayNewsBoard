@@ -2,5 +2,5 @@ from django.apps import AppConfig
 
 
 class NewsboardConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'newsboard'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "newsboard"
