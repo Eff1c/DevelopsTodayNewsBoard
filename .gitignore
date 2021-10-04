@@ -1,5 +1,7 @@
 __pycache__
 venv
 .idea
+.pytest_cache
+*.pyc
 .env
 anything.txt
