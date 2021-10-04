@@ -53,7 +53,9 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
         max_length=100,
         required=False,
     )
-    comments = CommentSerializer(many=True, read_only=False)
+    comments = CommentSerializer(
+        many=True, read_only=False, required=False
+    )
 
     class Meta:
         model = Post
@@ -85,6 +87,7 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
             "amount_of_upvotes", post.amount_of_upvotes
         )
         post.author_name = validated_data.get("author_name", post.author_name)
-        post.comments.set(validated_data.get("comments", post.comments))
+        post.comments.set(post.comments.all())
+
         post.save()
         return post
