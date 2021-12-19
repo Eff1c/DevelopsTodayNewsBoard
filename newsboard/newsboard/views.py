@@ -93,3 +93,11 @@ class UpvoteView(APIView):
         post.amount_of_upvotes += 1
         post.save()
         return Response({"message": "Post upvoted"}, status=status.HTTP_200_OK)
+
+
+class DownvoteView(APIView):
+    def post(self, request, post_id: int) -> Response:
+        post = get_object(Post, post_id)
+        post.amount_of_upvotes -= 1
+        post.save()
+        return Response({"message": "Post downvoted"}, status=status.HTTP_200_OK)

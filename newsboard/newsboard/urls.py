@@ -1,7 +1,7 @@
 from django.urls import path
 
 from .views import PostViewSet, PostDetail, CommentViewSet, \
-    CommentDetail, UpvoteView
+    CommentDetail, UpvoteView, DownvoteView
 
 
 post_list = PostViewSet.as_view({"get": "list", "post": "create"})
@@ -18,4 +18,5 @@ urlpatterns = [
         CommentDetail.as_view()
     ),
     path("api/posts/<int:post_id>/upvote/", UpvoteView.as_view()),
+    path("api/posts/<int:post_id>/downvote/", DownvoteView.as_view()),
 ]
